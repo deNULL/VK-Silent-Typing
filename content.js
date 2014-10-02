@@ -1,10 +1,10 @@
-window.addEventListener("keydown",
+/*document.addEventListener("keydown",
   function(e) {
     chrome.runtime.sendMessage({ message: "updateAltState", altState: e.altKey });
   },
 false);
-window.addEventListener("keyup",
+document.addEventListener("keyup",
   function(e){
     chrome.runtime.sendMessage({ message: "updateAltState", altState: e.altKey });
   },
-false);
+false);*/
