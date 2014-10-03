@@ -30,6 +30,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     sendResponse(altState);
   } else
   if (message.message == "openExtensions") {
-    chrome.tabs.create({'url': 'chrome://chrome/extensions/' } );
+    chrome.tabs.create({'url': 'chrome://extensions/?id=' + chrome.runtime.id } );
   }
 });
