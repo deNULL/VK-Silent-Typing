@@ -14,12 +14,14 @@ if (!vkst_inject) {
     document.addEventListener("keydown",
       function(e) {
         altState = e.altKey;
+        window.postMessage({ message: 'updateStateInject', altState: altState, fixed: fixed }, '*');
         hintPanel(altState || fixed);
       },
     false);
     document.addEventListener("keyup",
       function(e){
         altState = e.altKey;
+        window.postMessage({ message: 'updateStateInject', altState: altState, fixed: fixed }, '*');
         hintPanel(altState || fixed);
       },
     false);
@@ -71,7 +73,8 @@ if (!vkst_inject) {
         text-align: center;\
         padding: 8px;\
         line-height: 160%;\
-    ">Благодаря <a href="about:blank" onclick="window.postMessage({ message: \'openExtensions\' }, \'*\'); return false;" target="_blank">расширению <b>VK Silent Typing</b></a>, пока вы удерживаете <b>Alt</b>, все открываемые диалоги будут оставаться непрочитанными для собеседников.<div style="\
+    ">Благодаря <a href="about:blank" onclick="window.postMessage({ message: \'openExtensions\' }, \'*\'); return false;" target="_blank">расширению <b>VK Silent Typing</b></a>, пока вы удерживаете <b>Alt</b>, все открываемые диалоги будут оставаться непрочитанными для собеседников.<br/><br/>\
+    <b>Обратите внимание</b>: внешне может казаться, словно сообщения отмечаются прочитанными – но повторно зайдя в раздел сообщений, вы должны увидеть, что счетчик непрочитанных остался прежним.<div style="\
         margin: 10px 0px;\
         padding: 8px;\
         background: #EDF1F5;\

@@ -1,6 +1,6 @@
 {
   "name": "VK Silent Typing",
-  "version": "1.4",
+  "version": "1.5",
   "manifest_version": 2,
   "description": "Отключает отправку оповещений о наборе сообщений ВК. При нажатом Alt позволяет открывать сообщения, не помечая их прочитанными.",
   "icons": {
@@ -13,6 +13,7 @@
     "webRequest",
     "webRequestBlocking",
     "*://vk.com/*",
+    "*://*.vk.com/*",
     "*://*.vk.me/*"
   ],
   "background": {
