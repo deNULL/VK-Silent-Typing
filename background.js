@@ -16,23 +16,23 @@ chrome.webRequest.onCompleted.addListener(function(details) {
   urls: [
     "*://*.vk.me/js/al/im.js*",
     "*://vk.com/js/al/im.js*",
-    "*://new.vk.com/js/al/imn.js*"
+    "*://vk.com/js/al/imn.js*"
   ],
   types: ["script"]
 });
 var altState = false;
 var fixed = false;
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if (message.message == "updateAltState") {
+  if (message.message == 'updateAltState') {
     altState = message.altState;
     fixed = message.fixed;
     toggleRequestBlocking(altState || fixed);
   } else
-  if (message.message == "queryAltState") {
+  if (message.message == 'queryAltState') {
     sendResponse(altState);
   } else
-  if (message.message == "openExtensions") {
-    chrome.tabs.create({'url': 'chrome://extensions/?id=' + chrome.runtime.id } );
+  if (message.message == 'openExtensions') {
+    chrome.tabs.create({ 'url': 'chrome://extensions/?id=' + chrome.runtime.id });
   }
 });
 
@@ -43,6 +43,9 @@ function toggleRequestBlocking(block) {
   }
 
   function listener(details) {
+    if (!altState && !fixed) {
+      return { cancel: false };
+    }
     if (!details || !details.requestBody) {
       return { cancel: false };
     }
